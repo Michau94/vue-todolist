@@ -8,6 +8,9 @@
     <title>Vue ToDo List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'
+        integrity='sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=='
+        crossorigin='anonymous' />
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
@@ -18,29 +21,30 @@
 
     <div id="root">
 
-        <div class="container">
-            <header class="d-flex justify-content-center
-            ">
+        <div class="container vh-100">
+            <header class="d-flex justify-content-center ">
 
-                <div class="logo p-3">
+                <div class="logo m-3">
                     <img src="./img/logo.png" class="img-fluid">
 
             </header>
 
             <main>
-                <div class="row justify-content-center align-items-center">
+                <div class="row justify-content-center m-5 align-items-center">
                     <div class="input-group mb-3 w-75">
                         <input v-model="newTask" type="text" class="form-control" placeholder="New Task">
-                        <button @click="submitTask" class="btn btn-outline-secondary" type="button">Add Task</button>
+                        <button @click="submitTask" class="btn btn-success" type="button">Add Task</button>
                     </div>
-                    <div v-if="tasks.length === 0" class="d-flex justify-content-center">
-                        <h1>No tasks to do!</h1>
+                    <div v-if="tasks.length === 0" class="d-flex justify-content-center align-items-center m-3">
+
+                        <h1><i class="fas fa-check-circle"></i> No tasks to do! <i class="far fa-thumbs-up"></i></h1>
                     </div>
                     <div v-else class="content d-flex justify-content-center">
 
                         <ul class="list-group w-75 ">
-                            <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between">{{
-                                task }}
+                            <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between"
+                                :class="animation">
+                                {{task }}
                                 <button type="button" class="btn-close" @click="removeTask(index)"></button>
                             </li>
                         </ul>
