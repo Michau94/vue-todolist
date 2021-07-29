@@ -30,8 +30,11 @@
             <main>
                 <div class="row justify-content-center">
                     <div class="content justify-content-center d-flex">
-                        <ul class="list-group">
-                            <li v-for="task in tasks" class="list-group-item">{{ task }}</li>
+                        <ul class="list-group w-75 ">
+                            <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between">{{
+                                task }}
+                                <button type="button" class="btn-close" @click="removeTask(index)"></button>
+                            </li>
                         </ul>
                     </div>
                 </div>
