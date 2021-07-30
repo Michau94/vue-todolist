@@ -10,6 +10,7 @@ const root = new Vue({
             'Code',
             'Repeat'
         ],
+        searchTab: "",
 
     },
     methods: {
@@ -27,7 +28,8 @@ const root = new Vue({
             }
             // svuoto new task dopo submit
             this.newTask = '';
-        }
+        },
+
     }
 
 })

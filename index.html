@@ -31,21 +31,34 @@
 
             <main>
                 <div class="row justify-content-center m-5 align-items-center">
-                    <div class="input-group mb-3 w-75">
-                        <input v-model="newTask" type="text" class="form-control" placeholder="New Task">
-                        <button @click="submitTask" class="btn btn-success" type="button">Add Task</button>
+                    <div v-if="tasks.length" class="input-group mb-3 w-75">
+                        <input v-model="searchTab" type="text" class="form-control" placeholder="Cerca...">
+                        <button class="btn btn-danger" type="button">Cerca</button>
                     </div>
-                    <div v-if="tasks.length === 0" class="d-flex justify-content-center align-items-center m-3">
 
-                        <h1><i class="fas fa-check-circle"></i> No tasks to do! <i class="far fa-thumbs-up"></i></h1>
+                    <div v-if="!tasks.length " class="d-flex-c justify-content-center align-items-center m-3">
+                        <div class="input-group">
+                            <input @keyup.enter="submitTask" v-model="newTask" type="text" class="form-control"
+                                placeholder="New Task">
+                            <button @click="submitTask" class="btn btn-success" type="button">Add Task</button>
+                        </div>
+
+                        <h1 class="text-center m-3"><i class="fas fa-check-circle"></i> No tasks to do! <i
+                                class="far fa-thumbs-up"></i></h1>
                     </div>
                     <div v-else class="content d-flex justify-content-center">
 
                         <ul class="list-group w-75 ">
-                            <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between"
-                                :class="animation">
+                            <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between">
                                 {{task }}
                                 <button type="button" class="btn-close" @click="removeTask(index)"></button>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <input @keyup.enter="submitTask" v-model="newTask" type="text" class="form-control"
+                                        placeholder="New Task">
+                                    <button @click="submitTask" class="btn btn-success" type="button">Add Task</button>
+                                </div>
                             </li>
                         </ul>
                     </div>
