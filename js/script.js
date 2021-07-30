@@ -31,10 +31,13 @@ const root = new Vue({
         },
 
         showTask(task) {
+            // se presenti spazi fai vedere tutto
+            if (this.searchTab.trim() == "" || !this.searchTab) {
+                return true;
+            }
 
-            console.log(this.searchTab);
-
-            return task.includes(this.searchTab.toLowerCase()) ? true : false;
+            // mostra task se trovato se non trovato nascondi
+            return task.includes(this.searchTab.trim().toLowerCase()) ? true : false;
 
 
 
