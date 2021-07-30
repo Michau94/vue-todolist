@@ -38,8 +38,9 @@ const root = new Vue({
         submitTask() {
             if (this.newTask.trim() !== '') {
 
+
                 //submit new task dolo se non spazio vuoto
-                this.tasks.push(this.newTask);
+                this.tasks.push({ text: this.newTask, done: false });
             }
             // svuoto new task dopo submit
             this.newTask = '';
