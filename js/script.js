@@ -30,6 +30,17 @@ const root = new Vue({
             this.newTask = '';
         },
 
+        showTask(task) {
+
+            console.log(this.searchTab);
+
+            return task.includes(this.searchTab.toLowerCase()) ? true : false;
+
+
+
+        }
+
+
     }
 
 })
