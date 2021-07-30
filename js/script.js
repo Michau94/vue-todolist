@@ -5,10 +5,23 @@ const root = new Vue({
     data: {
         newTask: '',
         tasks: [
-            'Sleep',
-            'Eat',
-            'Code',
-            'Repeat'
+
+            {
+                text: 'Sleep',
+                done: false
+            },
+            {
+                text: 'Eat',
+                done: false
+            },
+            {
+                text: 'Code',
+                done: false
+            },
+            {
+                text: 'Repeat',
+                done: false
+            },
         ],
         searchTab: "",
 
@@ -19,6 +32,8 @@ const root = new Vue({
         removeTask(i) {
             this.tasks.splice(i, 1);
         },
+
+
 
         submitTask() {
             if (this.newTask.trim() !== '') {
@@ -32,17 +47,36 @@ const root = new Vue({
 
         showTask(task) {
             // se presenti spazi fai vedere tutto
-            if (this.searchTab.trim() == "" || !this.searchTab) {
+
+            const updTask = task.toLowerCase();
+
+            if (this.searchTab.trim() === " " || !this.searchTab) {
                 return true;
             }
 
             // mostra task se trovato se non trovato nascondi
-            return task.includes(this.searchTab.trim().toLowerCase()) ? true : false;
+            return updTask.includes(this.searchTab.trim().toLowerCase()) ? true : false;
+
+        },
 
 
 
-        }
+        toggleDone(index) {
+            const updatedTasks = this.tasks.map((task, taskIndex) => {
+                if (taskIndex === index) {
+                    task.done = !task.done
+                }
 
+                return task;
+            })
+
+            this.tasks = updatedTasks;
+
+        },
+
+        isDone(index) {
+            return this.tasks[index].done;
+        },
 
     }
 

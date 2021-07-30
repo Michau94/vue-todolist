@@ -52,12 +52,17 @@
                     </div>
 
                     <!-- todoList -->
+
                     <div v-else class="content d-flex justify-content-center">
 
                         <ul class="list-group w-75 ">
-                            <li v-if="showTask(task.toLowerCase())" v-for="(task, index) in tasks"
+                            <li v-if="showTask(task.text)" v-for="(task, index) in tasks"
                                 class="list-group-item d-flex justify-content-between">
-                                {{ task }}
+                                <div class="clickable" @click="toggleDone(index)">
+                                    <i :class="isDone(index) ? 'far fa-check-square' : 'far fa-square'"></i>
+                                    <span :class="isDone(index) ? 'text-decoration-line-through' : ''">{{ task.text
+                                        }}</span>
+                                </div>
                                 <button type="button" class="btn-close" @click="removeTask(index)"></button>
                             </li>
                             <li class="list-group-item">
