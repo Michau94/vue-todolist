@@ -35,6 +35,7 @@ const root = new Vue({
 
 
 
+
         submitTask() {
             if (this.newTask.trim() !== '') {
 
@@ -78,6 +79,29 @@ const root = new Vue({
         isDone(index) {
             return this.tasks[index].done;
         },
+
+
+
+        //# BONUS VACANZE 
+
+        removeTasks() {
+            this.tasks.splice(0, this.tasks.length);
+        },
+
+        allDone() {
+            const allDone = this.tasks.map((task) => {
+                task.done = true;
+            })
+
+            return allDone;
+        },
+        allToDo() {
+            const allToDo = this.tasks.map((task) => {
+                task.done = false;
+            })
+
+            return allToDo;
+        }
 
     }
 

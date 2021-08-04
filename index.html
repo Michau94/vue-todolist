@@ -34,13 +34,19 @@
 
                 <div class="row justify-content-center m-5 align-items-center">
 
+                    <div class="btn-group w-50 m-3" role="group">
+                        <button @click="allDone" type="button" class="btn btn-success">Tutti fatti</button>
+                        <button @click="allToDo" type="button" class="btn btn-warning">Tutti da fare</button>
+                        <button @click="removeTasks" type="button" class="btn btn-danger">Elimina tutti</button>
+                    </div>
+
                     <!-- SearchBAR -->
                     <div v-if="tasks.length" class="input-group mb-3 w-75">
                         <input v-model="searchTab" type="text" class="form-control" placeholder="Cerca...">
                     </div>
 
                     <!-- submit task if empty -->
-                    <div v-if="!tasks.length " class="d-flex-c justify-content-center align-items-center m-3">
+                    <div v-if="!tasks.length" class="d-flex-c justify-content-center align-items-center m-3 w-75">
                         <div class="input-group">
                             <input @keyup.enter="submitTask" v-model="newTask" type="text" class="form-control"
                                 placeholder="New Task">
